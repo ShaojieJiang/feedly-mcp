@@ -1,6 +1,5 @@
 """Example module."""
 
-import httpx
 from feedly.api_client.session import FeedlySession
 from feedly.api_client.stream import StreamOptions
 from mcp.server.fastmcp import FastMCP
@@ -12,14 +11,14 @@ logger = get_logger(__name__)
 
 
 @server.tool()
-async def get_ai_news(max_count: int = 10) -> tuple[str, str]:
+async def get_ai_news(max_count: int = 10) -> list[dict[str, str]]:
     """Get the latest entries from the AI category.
 
     Args:
         max_count (int, optional): The maximum number of entries to get. Defaults to 10.
 
     Returns:
-        tuple[str, str]: A tuple of the title and id of the entries.
+        list[dict[str, str]]: A list of dictionaries of the title and id of the entries.
     """
     session = FeedlySession()
     result = []
@@ -29,7 +28,7 @@ async def get_ai_news(max_count: int = 10) -> tuple[str, str]:
     for article in category_name.stream_contents(
         options=StreamOptions(max_count=max_count)
     ):
-        result.append((article["title"], article["id"]))
+        result.append({"title": article["title"], "id": article["id"]})
 
     return result
 
