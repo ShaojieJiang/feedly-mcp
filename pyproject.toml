@@ -5,6 +5,7 @@ requires = ["hatchling"]
 [dependency-groups]
 dev = [
   "bump2version",
+  "diff-cover>=9.2.4",
   "isort",
   "mypy==1.11.2",
   "pre-commit",
@@ -12,7 +13,8 @@ dev = [
   "pytest-asyncio==0.23.8",
   "pytest-cov==4.1.0",
   "ruff==0.4.6",
-  "types-requests"
+  "smokeshow>=0.5.0",
+  "types-requests",
 ]
 docs = [
   "mkdocs",
@@ -23,12 +25,19 @@ docs = [
 ]
 
 [project]
-dependencies = []
+dependencies = [
+    "feedly>=0.11.3",
+    "feedly-client",
+    "mcp[cli]>=1.5.0",
+]
 description = "Add your description here"
-name = "uv-template"
+name = "feedly-mcp"
 readme = "README.md"
 requires-python = ">=3.12"
-version = "0.1.0"
+version = "0.0.1"
+
+[project.scripts]
+mcp-is-dangerous = "feedly_mcp:main"
 
 [tool.coverage.report]
 exclude_lines = [
@@ -41,7 +50,7 @@ exclude_lines = [
 [tool.coverage.run]
 branch = true
 command_line = "-m pytest"
-source = ["poetry_template"]
+source = ["feedly_mcp"]
 
 [tool.mypy]
 disallow_untyped_defs = true
@@ -83,7 +92,7 @@ select = [
 
 [tool.ruff.lint.isort]
 force-single-line = true
-known-first-party = ["poetry_template"]
+known-first-party = ["feedly_mcp"]
 lines-after-imports = 2
 no-lines-before = ["future", "standard-library", "third-party", "first-party", "local-folder"]
 
@@ -95,3 +104,6 @@ max-complexity = 10
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
+
+[tool.uv.sources]
+feedly-client = { git = "https://github.com/feedly/python-api-client" }
