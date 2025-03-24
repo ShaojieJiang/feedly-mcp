@@ -37,7 +37,7 @@ requires-python = ">=3.12"
 version = "0.0.1"
 
 [project.scripts]
-mcp-is-dangerous = "feedly_mcp:main"
+feedly-mcp = "feedly_mcp:main"
 
 [tool.coverage.report]
 exclude_lines = [
