@@ -1,5 +1,9 @@
 # Feedly MCP
 
+[![CI](https://github.com/ShaojieJiang/feedly-mcp/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/ShaojieJiang/feedly-mcp/actions/workflows/ci.yml?query=branch%3Amain)
+[![Coverage](https://coverage-badge.samuelcolvin.workers.dev/ShaojieJiang/feedly-mcp.svg)](https://coverage-badge.samuelcolvin.workers.dev/redirect/ShaojieJiang/feedly-mcp)
+[![PyPI](https://img.shields.io/pypi/v/feedly-mcp.svg)](https://pypi.python.org/pypi/feedly-mcp)
+
 A MCP for Feedly.
 
 Core functionality:
